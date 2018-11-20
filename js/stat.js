@@ -35,9 +35,10 @@ window.renderStatistics = function (ctx, names, times) {
   var maxTime = Math.max.apply(Math, times); // максимальное время за которое пройдена игра
 
   for (var i = 0; i < names.length; i++) {
+    var positionX = Cloud.OFFSET_X + Bar.OFFSET_X + (Bar.OFFSET_X + Bar.WIDTH) * i;
     currentColor = (names[i] === 'Вы') ? 'rgba(255, 0, 0, 1)' : 'rgba(0, 0, 255, ' + (Math.random() * 1).toFixed(1) + ')';
-    renderText(ctx, names[i], Cloud.OFFSET_X + Bar.OFFSET_X + (Bar.OFFSET_X + Bar.WIDTH) * i, Cloud.HEIGHT - Cloud.GAP);
-    renderRect(ctx, Cloud.OFFSET_X + Bar.OFFSET_X + (Bar.OFFSET_X + Bar.WIDTH) * i, Cloud.HEIGHT - Bar.OFFSET_Y, Bar.WIDTH, -(Bar.HEIGHT * times[i] / maxTime), currentColor);
+    renderText(ctx, names[i], positionX, Cloud.HEIGHT - Cloud.GAP);
+    renderRect(ctx, positionX, Cloud.HEIGHT - Bar.OFFSET_Y, Bar.WIDTH, -(Bar.HEIGHT * times[i] / maxTime), currentColor);
   }
 
 };
